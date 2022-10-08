@@ -11,7 +11,7 @@ const App = () => {
       
       <Image source={require('./assets/favicon.png')}/>
       <ImageBackground
-        style={{width:200, height:200}}
+        style={{width:400, height:400}}
         source={{
           uri: 'https://t1.daumcdn.net/cfile/tistory/99CC093D5B215BF41E',
         }}
