@@ -3,9 +3,9 @@ import { Button, View, ScrollView, StyleSheet, Text, Image, ImageBackground } fr
 import Constants from 'expo-constants';
 import { useState } from "react";
 
-const App = () => {
+const Layout = () => {
 
-  const flexDirections = ['row', 'row-reverse', 'column', 'column-reverse'];
+  const flexDirectionsArray = ['row', 'row-reverse', 'column', 'column-reverse'];
   const justifyContents = [
     'flex-start',
     'flex-end',
@@ -18,10 +18,18 @@ const App = () => {
   const wraps = ['nowrap', 'wrap', 'wrap-reverse'];
   const directions = ['inherit', 'ltr', 'rtl'];
 
-  const [flexDirection, setFlexDirection] = useState(0);
+  const [flexDirectionIndex, setFlexDirection] = useState(0);
+  const [justifyContentIndex, setJustifyContent] = useState(0);
+  const [alignItemIndex, setAlignItem] = useState(0);
+  const [wrapIndex, setWrap] = useState(0);
+  const [aaa, setDirection] = useState(0);
 
   const hookedStyles = {
-    flexDirection: flexDirections[flexDirection],
+    flexDirection: flexDirectionsArray[flexDirectionIndex],
+    justifyContent: justifyContents[justifyContentIndex],
+    alignItems: alignItems[alignItemIndex],
+    flexWrap : wraps[wrapIndex],
+    direction : directions[aaa],
   }  
 
   const changeSetting = (value, options, setterfunction) => {
@@ -57,25 +65,25 @@ const App = () => {
       <View style = {[styles.controlSpace]}>
         <View style={[styles.buttonView]}>
           <Button title="CHANGE FLEX DIRECTION" 
-            onPress={() => changeSetting(flexDirection, flexDirections, setFlexDirection)}
+            onPress={() => changeSetting(flexDirectionIndex, flexDirectionsArray, setFlexDirection)}
           />
         </View>
         <View style={[styles.buttonView]}>
           <Button title="CHANGE JUSTIFY CONTENT" 
-            onPress={() => console.log("CHANGE JUSTIFY CONTENT")}
+            onPress={() => changeSetting(justifyContentIndex, justifyContents, setJustifyContent)}
           />
         </View>
         <View style={[styles.buttonView]}>
           <Button title="CHANGE ALIGN ITEMS" 
-            onPress={() => console.log("CHANGE ALIGN ITEMS")}/>
+            onPress={() => changeSetting(alignItemIndex, alignItems, setAlignItem)}/>
         </View>
         <View style={[styles.buttonView]}>
           <Button title="CHANGE DIRECTION" 
-            onPress={() => console.log("CHANGE DIRECTION")}/>
+            onPress={() => changeSetting(wrapIndex, wraps, setWrap)}/>
         </View>
         <View style={[styles.buttonView]}>
           <Button title="CHAGE FLEX WRAP" 
-            onPress={() => console.log("CHAGE FLEX WRAP")}/>
+            onPress={() => changeSetting(aaa, directions, setDirection)}/>
         </View>
         <View style={[styles.buttonView]}>
           <Button title="ADD SQUARE" 
@@ -122,4 +130,4 @@ const randomHexColor = () => {
   });
 };
 
-export default App;
+export default Layout;
