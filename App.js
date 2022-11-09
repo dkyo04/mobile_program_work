@@ -53,7 +53,7 @@ const App = () => {
         </View>
         <View style={[styles.buttonView]}>
           <Button title="ADD SQUARE" 
-            onPress={() => console.log("ADD SQUARE")}/>
+            onPress={() => setSquares([...squares, Square()])}/>
         </View>
         <View style={[styles.buttonView]}>
           <Button title="DELETE SQUARE" 
